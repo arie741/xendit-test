@@ -1,23 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes, NavLink } from "react-router-dom";
+import Home from "./components/pages/Home";
+import Search from "./components/pages/Search";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <div>
+          <nav className="bg-xendit">
+            <ul className="flex flex-row container space-x-10 h-16">
+              <li className="h-full pt-4">
+                <NavLink to="/" className='text-xendit-lightest text-xl'>Home</NavLink>
+              </li>
+              <li className="h-full pt-4">
+                <NavLink to="/search" className='text-xendit-lightest text-xl'>Search</NavLink>
+              </li>
+              <li className="h-full pt-4">
+                <NavLink to="/subscribe" className='text-xendit-lightest text-xl'>Subscribe</NavLink>
+              </li>
+            </ul>
+          </nav>
+
+          {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+          <Routes>
+            <Route exact path="/subscribe" element={<div>Subscribe</div>}/>
+            <Route exact path="/search" element={<Search />}/>
+            <Route exact path="/" element={<Home/>} />
+            <Route exact path='*' element={<div>404 not found</div>} />
+          </Routes>
+        </div>
+      </Router>
     </div>
   );
 }
