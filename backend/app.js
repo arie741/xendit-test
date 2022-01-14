@@ -59,7 +59,7 @@ app.post("/users", (req, res) => {
   } else {
     fs.writeFile(
       "./public/mock_database/users.json",
-      JSON.stringify([...currentSubscribers, {
+      JSON.stringify([...currentUsers, {
         uid: uuidv4(),
         email,
         password,

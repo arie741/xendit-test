@@ -8,6 +8,7 @@ import Subscribe from "./components/pages/Subscribe";
 import NotFound from "./components/pages/NotFound";
 import Login from "./components/pages/Login";
 import NavBar from "./components/NavBar";
+import Register from "./components/pages/Register";
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
           <Routes>
             <Route exact path="/subscribe" element={<Subscribe />} />
             <Route exact path="/login" element={<Login />} />
+            <Route exact path="/register" element={<Register />} />
+            <Route exact path="/favorite" element={<div>Favorite</div>} />
             <Route exact path="/" element={<Search />} />
             <Route exact path="*" element={<NotFound />} />
           </Routes>

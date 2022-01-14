@@ -1,43 +1,38 @@
 import { useForm } from "react-hook-form";
-import { validateUser } from "../../api/users";
-import { useEffect, useState } from "react";
-import { useNavigate, NavLink  } from "react-router-dom";
+import { addUser } from "../../api/users";
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
-function Login() {
-  const navigate = useNavigate();
+function Register() {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   const [errorMessage, setErrorMessage] = useState();
-  
-
-  useEffect(() => {
-    if(localStorage.getItem("xendit-email")){
-        navigate("/");
-    }
-
-  }, [])
+  const [successMessage, setSuccessMessage] = useState();
 
   function onSubmit(data) {
-    validateUser(data.email, data.password)
-      .then((response) => {
-        if (response.response === true) {
+    if (data.password === data.confirmpassword) {
+      addUser(data.email, data.password)
+        .then((response) => {
+          if(response.error){
+              throw response.response
+          }
           setErrorMessage("");
-          localStorage.setItem("xendit-email", data.email);
-          window.location.reload();
-          navigate("/");
-        } else {
-          throw "You put the wrong email or password.";
-        }
-      })
-      .catch((error) => setErrorMessage(error));
+          setSuccessMessage("Your Account is Created!");
+        })
+        .catch(() =>
+          setErrorMessage("Something is wrong. Please try again later.")
+        );
+    } else {
+      setErrorMessage("Your password doesn't match");
+    }
   }
   return (
     <div className="container pt-10">
       <div className="w-80 mx-auto border border-2 border-gray-200 shadow-xl p-4">
-        <div className="font-bold text-3xl mb-10">Login</div>
+        <div className="font-bold text-3xl mb-10">Register</div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="font-bold">Email</div>
           <input
@@ -59,19 +54,29 @@ function Login() {
             autoComplete="on"
             required
           />
+          <div className="font-bold">Confirm password</div>
+          <input
+            className="shadow-md border border-2 border-grey-100 rounded w-full p-4 mb-4"
+            {...register("confirmpassword")}
+            type="password"
+            autoComplete="on"
+            required
+          />
           {errorMessage && (
             <div className="text-red-700 my-2">{errorMessage}</div>
           )}
-          <div>Doesn&apos;t have an account? <NavLink className="text-xendit font-bold" to="/register">Register</NavLink></div>
           <input
             className="cursor-pointer rounded py-2 bg-xendit text-xendit-lightest px-2 my-2"
             type="submit"
-            value="Login"
+            value="Register"
           />
+          {successMessage && (
+            <div className="text-green-700 my-2">{successMessage} <NavLink className="text-xendit font-bold" to="/login">Login</NavLink></div>
+          )}
         </form>
       </div>
     </div>
   );
 }
 
-export default Login;
+export default Register;

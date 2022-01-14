@@ -1,14 +1,1 @@
-[
-    {
-        "uid": "as8asdydgas8",
-        "email": "a.pranasakti@gmail.com",
-        "password": "abcdef",
-        "favorites": []
-    },
-    {
-        "uid": "asdsasadas31d21e12d1212",
-        "email": "admin@gmail.com",
-        "password": "abcdef",
-        "favorites": []
-    }
-]
+[{"uid":"as8asdydgas8","email":"a.pranasakti@gmail.com","password":"abcdef","favorites":[]},{"uid":"asdsasadas31d21e12d1212","email":"admin@gmail.com","password":"abcdef","favorites":[]},{"uid":"302ef2c8-2e33-401a-95d0-329fd36d86fe","email":"jancuk@gmail.com","password":"abcdef","favorites":[]},{"uid":"2ad120f9-1688-4fc9-94cd-ec5e2f19ee05","email":"arie@pranasakti.com","password":"abcdef","favorites":[]},{"uid":"c7d20cc5-8753-4de4-b05f-a4b3b4aba0a3","email":"anjir@anjir.com","password":"abcdef","favorites":[]}]

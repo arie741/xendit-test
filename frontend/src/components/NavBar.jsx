@@ -1,7 +1,7 @@
 import { useNavigate, NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 function NavBar() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState();
   useEffect(() => {
     if (localStorage.getItem("xendit-email")) {
@@ -9,11 +9,11 @@ function NavBar() {
     }
   }, []);
 
-  function logout(){
+  function logout() {
     localStorage.removeItem("xendit-email");
-    setIsLogin(false)
+    setIsLogin(false);
     window.location.reload();
-    navigate("/")
+    navigate("/");
   }
 
   return (
@@ -36,11 +36,21 @@ function NavBar() {
             </NavLink>
           </li>
         ) : (
-          <li className="h-full pt-4">
-            <div onClick={() => logout()} className="cursor-pointer text-xendit-lightest text-xl">
-              Logout
-            </div>
-          </li>
+          <>
+            <li className="h-full pt-4">
+              <NavLink to="/favorite" className="text-xendit-lightest text-xl">
+                Favorites
+              </NavLink>
+            </li>
+            <li className="h-full pt-4">
+              <div
+                onClick={() => logout()}
+                className="cursor-pointer text-xendit-lightest text-xl"
+              >
+                Logout
+              </div>
+            </li>
+          </>
         )}
       </ul>
     </nav>
