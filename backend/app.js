@@ -3,7 +3,6 @@ const cors = require("cors");
 const app = express();
 const port = 3001;
 const subscribers = require("./public/mock_database/subscribers.json");
-const unidata = require("./public/mock_database/data.json");
 const fs = require("fs");
 const bodyParser = require("body-parser");
 

@@ -18,17 +18,17 @@ function Search() {
     setErrorMessage("");
     getUniversity(data.name, data.country)
       .then((resp) => {
-        setLoading(false);
         if (resp.error) {
           setUniverisities([]);
           throw resp.response;
         } else {
           setUniverisities(resp.response.data);
+          setLoading(false);
         }
       })
       .catch((error) => {
-        setLoading(false);
         setErrorMessage(error.toString());
+        setLoading(false);
       });
   }
 

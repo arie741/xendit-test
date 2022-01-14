@@ -27,12 +27,16 @@ function Subscribe() {
       });
   }
 
+  function handleOnChange(){
+    setErrorMessage("")
+    setSucessMessage("")
+  }
   return (
     <div className="container pt-10">
       <div className="text-3xl font-bold mb-5">Subscription</div>
       <div className="mb-5">Please subscribe to get more information from us!</div>
       <div className="font-bold">Type in your email</div>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} onChange={() => handleOnChange()}>
         <input
           name="email"
           aria-invalid={errors.email ? "true" : "false"}
