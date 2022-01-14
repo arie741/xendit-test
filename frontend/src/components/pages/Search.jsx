@@ -2,14 +2,15 @@ import { getUniversity } from "../../api/university";
 import { useState } from "react";
 import { Circles } from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-import UniversityItem from "../UniversityItem";
 import { useForm } from "react-hook-form";
 import countryList from "../../utilities/countryList";
+import UniversitiesList from "../UniversitiesList";
 
 function Search() {
   let [universities, setUniverisities] = useState();
   let [loading, setLoading] = useState(false);
   let [errorMessage, setErrorMessage] = useState();
+  let [sortType, setSortType] = useState("name");
   const { register, handleSubmit } = useForm();
 
   function onSubmit(data) {
@@ -20,7 +21,7 @@ function Search() {
         setLoading(false);
         if (resp.error) {
           setUniverisities([]);
-          throw resp.message;
+          throw resp.response;
         } else {
           setUniverisities(resp.response.data);
         }
@@ -33,7 +34,7 @@ function Search() {
 
   return (
     <div className="container pt-10">
-      <div className="text-3xl font-bold mb-5">Search universities</div>
+      <div className="text-3xl font-bold mb-5">Find universities</div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="font-bold">Name</div>
         <input
@@ -67,19 +68,20 @@ function Search() {
           <Circles type="Circles" color="#00BFFF" height={100} width={100} />
         </div>
       ) : universities ? (
-        universities.slice(0, 50).map((item, index) => (
-          <div className="mt-2" key={index}>
-            <UniversityItem
-              name={item.name}
-              country={item.country}
-              website={item.web_pages}
-            />
+        <div className="mt-10">
+          <div>
+            <div className="font-bold">Sort by</div>
+            <select className="rounded h-10 bg-xendit-lightest border border-2 border-grey shadow-md" onChange={(event) => setSortType(event.target.value)}>
+              <option value="name">Name</option>
+              <option value="country">Country</option>
+            </select>
           </div>
-        ))
+          <UniversitiesList universities={universities} sortBy={sortType}/>
+        </div>
       ) : (
         ""
       )}
-      {errorMessage && errorMessage}
+      {errorMessage && <div className="mt-5 font-bold text-lg text-red-700">{errorMessage}</div>}
     </div>
   );
 }
