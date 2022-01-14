@@ -50,11 +50,20 @@ app.get("/users/:email", (req, res) => {
   }
 })
 
+app.get("/users/favorites/:email", (req, res) => {
+  let findUser = users.find(item => item.email === req.params.email);
+  if(req.params.email){
+    res.send(findUser.favorites)
+  } else {
+    res.status(404).send("User not found")
+  }
+})
+
 app.post("/users", (req, res) => {
   let email = req.body.email;
   let password = req.body.password;
   let currentUsers = users;
-  if (currentUsers.indexOf(email) !== -1) {
+  if (currentUsers.map(item => item.email).indexOf(email) !== -1) {
     res.status(409).send("Email already exists.");
   } else {
     fs.writeFile(
@@ -74,6 +83,31 @@ app.post("/users", (req, res) => {
       }
     );
     res.send("Email successfuly registered.");
+  }
+})
+
+app.post("/users/favorites", (req, res) => {
+  let email = req.body.email;
+  let favorite = req.body.favorite;
+  let currentUsers = users;
+  if (currentUsers.map(item => item.email).indexOf(email) === -1) {
+    res.status(409).send("Email doesn't exists.");
+  } else {
+    let userIndex = currentUsers.map(item => item.email).indexOf(email) 
+    let currentFavorites = currentUsers.find(item => item.email === email).favorites
+    currentUsers[userIndex].favorites = [...currentFavorites, favorite]
+    fs.writeFile(
+      "./public/mock_database/users.json",
+      JSON.stringify([...currentUsers]),
+      "utf8",
+      function (err) {
+        if (err) {
+          console.log("An error occured while writing JSON Object to File.");
+          return console.log(err);
+        }
+      }
+    );
+    res.send("Favorites successfuly added.");
   }
 })
 

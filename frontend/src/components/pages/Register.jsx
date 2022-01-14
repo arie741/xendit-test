@@ -16,14 +16,14 @@ function Register() {
     if (data.password === data.confirmpassword) {
       addUser(data.email, data.password)
         .then((response) => {
-          if(response.error){
-              throw response.response
+          if (response.error) {
+            throw response.response;
           }
           setErrorMessage("");
           setSuccessMessage("Your Account is Created!");
         })
-        .catch(() =>
-          setErrorMessage("Something is wrong. Please try again later.")
+        .catch((error) =>
+          setErrorMessage(error.toString())
         );
     } else {
       setErrorMessage("Your password doesn't match");
@@ -49,7 +49,7 @@ function Register() {
           <div className="font-bold">Password</div>
           <input
             className="shadow-md border border-2 border-grey-100 rounded w-full p-4 mb-4"
-            {...register("password")}
+            {...register("password", { minLength: 5 })}
             type="password"
             autoComplete="on"
             required
@@ -57,11 +57,17 @@ function Register() {
           <div className="font-bold">Confirm password</div>
           <input
             className="shadow-md border border-2 border-grey-100 rounded w-full p-4 mb-4"
-            {...register("confirmpassword")}
+            {...register("confirmpassword", { minLength: 5 })}
             type="password"
             autoComplete="on"
             required
           />
+          {errors.email && errors.email.type === "pattern" && (
+            <div className="text-red-700 my-2">Email address is invalid.</div>
+          )}
+          {errors.password && errors.password.type === "minLength" && (
+            <div className="text-red-700 my-2">Password must be longer than 5 characters.</div>
+          )}
           {errorMessage && (
             <div className="text-red-700 my-2">{errorMessage}</div>
           )}
@@ -71,7 +77,12 @@ function Register() {
             value="Register"
           />
           {successMessage && (
-            <div className="text-green-700 my-2">{successMessage} <NavLink className="text-xendit font-bold" to="/login">Login</NavLink></div>
+            <div className="text-green-700 my-2">
+              {successMessage}{" "}
+              <NavLink className="text-xendit font-bold" to="/login">
+                Login
+              </NavLink>
+            </div>
           )}
         </form>
       </div>

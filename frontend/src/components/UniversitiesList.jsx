@@ -52,6 +52,7 @@ function UniversitiesList({ universities, sortBy }) {
               name={item.name}
               country={item.country}
               website={item.web_pages}
+              favbutton={true}
             />
           </div>
         ))}

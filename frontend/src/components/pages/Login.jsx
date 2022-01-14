@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { validateUser } from "../../api/users";
 import { useEffect, useState } from "react";
-import { useNavigate, NavLink  } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 
 function Login() {
   const navigate = useNavigate();
@@ -11,14 +11,12 @@ function Login() {
     formState: { errors },
   } = useForm();
   const [errorMessage, setErrorMessage] = useState();
-  
 
   useEffect(() => {
-    if(localStorage.getItem("xendit-email")){
-        navigate("/");
+    if (localStorage.getItem("xendit-email")) {
+      navigate("/");
     }
-
-  }, [])
+  }, []);
 
   function onSubmit(data) {
     validateUser(data.email, data.password)
@@ -59,10 +57,18 @@ function Login() {
             autoComplete="on"
             required
           />
+          {errors.email && errors.email.type === "pattern" && (
+            <div className="text-red-700 my-2">Email address is invalid.</div>
+          )}
           {errorMessage && (
             <div className="text-red-700 my-2">{errorMessage}</div>
           )}
-          <div>Doesn&apos;t have an account? <NavLink className="text-xendit font-bold" to="/register">Register</NavLink></div>
+          <div>
+            Doesn&apos;t have an account?{" "}
+            <NavLink className="text-xendit font-bold" to="/register">
+              Register
+            </NavLink>
+          </div>
           <input
             className="cursor-pointer rounded py-2 bg-xendit text-xendit-lightest px-2 my-2"
             type="submit"

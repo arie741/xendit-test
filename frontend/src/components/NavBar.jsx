@@ -30,11 +30,18 @@ function NavBar() {
           </NavLink>
         </li>
         {!isLogin ? (
-          <li className="h-full pt-4">
-            <NavLink to="/login" className="text-xendit-lightest text-xl">
-              Login
-            </NavLink>
-          </li>
+          <>
+            <li className="h-full pt-4">
+              <NavLink to="/login" className="text-xendit-lightest text-xl">
+                Login
+              </NavLink>
+            </li>
+            <li className="h-full pt-4">
+              <NavLink to="/register" className="text-xendit-lightest text-xl">
+                Register
+              </NavLink>
+            </li>
+          </>
         ) : (
           <>
             <li className="h-full pt-4">
