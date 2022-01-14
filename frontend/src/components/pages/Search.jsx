@@ -1,5 +1,5 @@
 import { getUniversity } from "../../api/university";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Circles } from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import UniversityItem from "../UniversityItem";
@@ -10,50 +10,44 @@ function Search() {
   let [universities, setUniverisities] = useState();
   let [loading, setLoading] = useState(false);
   let [errorMessage, setErrorMessage] = useState();
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit } = useForm();
 
   function onSubmit(data) {
     setLoading(true);
     setErrorMessage("");
-    if (data.name.length !== 0 || data.country.length !== 0) {
-      getUniversity(data.name, data.country)
-        .then((resp) => {
-          setLoading(false);
-          if (resp.error) {
-            setUniverisities([]);
-            throw resp.message;
-          } else {
-            setUniverisities(resp.response.data);
-          }
-        })
-        .catch((error) => {
-          setLoading(false);
-          setErrorMessage(error.toString());
-        });
-    } else {
-      setUniverisities([]);
-      setLoading(false);
-    }
+    getUniversity(data.name, data.country)
+      .then((resp) => {
+        setLoading(false);
+        if (resp.error) {
+          setUniverisities([]);
+          throw resp.message;
+        } else {
+          setUniverisities(resp.response.data);
+        }
+      })
+      .catch((error) => {
+        setLoading(false);
+        setErrorMessage(error.toString());
+      });
   }
 
   return (
     <div className="container pt-10">
-      <div className="text-3xl font-bold">Search universities</div>
+      <div className="text-3xl font-bold mb-5">Search universities</div>
       <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="font-bold">Name</div>
         <input
           type="text"
           className="shadow-md border border-2 border-grey-100 rounded w-full p-4"
           {...register("name")}
         />
-        <div className="flex flex-row mt-2">
-          <div className="pt-2">Country: </div>
-          <select className="w-full rounded h-10 ml-2 bg-xendit-lightest border border-2 border-grey shadow-md" {...register("country")}>
-              <option value=""></option>
+        <div className="mt-2">
+          <div className="pt-2 font-bold">Country</div>
+          <select
+            className="w-full rounded h-10 bg-xendit-lightest border border-2 border-grey shadow-md"
+            {...register("country")}
+          >
+            <option value="">Any Countries</option>
             {countryList.map((country, index) => (
               <option key={index} value={country}>
                 {country}
@@ -64,7 +58,7 @@ function Search() {
         <input
           type="submit"
           value="Find Universities"
-          className="rounded py-2 bg-xendit text-xendit-lightest px-2 my-2"
+          className="rounded py-2 bg-xendit text-xendit-lightest px-2 my-2 cursor-pointer"
         />
       </form>
 

@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Routes, NavLink } from "react-router-dom";
 import Home from "./components/pages/Home";
 import Search from "./components/pages/Search";
+import Subscribe from "./components/pages/Subscribe";
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
           {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
           <Routes>
-            <Route exact path="/subscribe" element={<div>Subscribe</div>}/>
+            <Route exact path="/subscribe" element={<Subscribe />}/>
             <Route exact path="/search" element={<Search />}/>
             <Route exact path="/" element={<Home/>} />
             <Route exact path='*' element={<div>404 not found</div>} />

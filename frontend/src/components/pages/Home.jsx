@@ -30,7 +30,7 @@ function Home() {
 
   return (
     <div className="container pt-10">
-      <div className="text-3xl font-bold">Universities in Indonesia</div>
+      <div className="text-3xl font-bold mb-5">Universities in Indonesia</div>
       {universities ? (
         universities.map((item, index) => (
           <div className="mt-2" key={index}>
@@ -46,6 +46,7 @@ function Home() {
           <Circles type="Circles" color="#00BFFF" height={100} width={100} />
         </div>
       )}
+      {errorMessage && errorMessage}
     </div>
   );
 }
