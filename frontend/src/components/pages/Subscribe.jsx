@@ -31,6 +31,7 @@ function Subscribe() {
     setErrorMessage("")
     setSucessMessage("")
   }
+  
   return (
     <div className="container pt-10">
       <div className="text-3xl font-bold mb-5">Subscription</div>
