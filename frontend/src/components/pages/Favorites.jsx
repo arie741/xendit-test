@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 function Favorites() {
   const [favorites, setFavorites] = useState();
   const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState();
 
   useEffect(() => {
     if (!localStorage.getItem("xendit-email")) {
@@ -15,7 +16,9 @@ function Favorites() {
         .then((response) => {
           setFavorites(response.response.data);
         })
-        .catch((error) => console.log(error));
+        .catch((error) => {
+          setErrorMessage(error.toString())
+        });
     }
   }, []);
 
@@ -35,6 +38,7 @@ function Favorites() {
       ) : (
         <div className="text-2xl mt-10">You have no favorite universities, add some!</div>
       )}
+      {errorMessage && <div className="text-red-700 my-2">{errorMessage}</div>}
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import { useNavigate, NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { FiAlignJustify } from "react-icons/fi";
+import { FaGraduationCap } from "react-icons/fa";
 
 function MobileNav({ isLogin, logout }) {
   return (
@@ -116,8 +117,8 @@ function NavBar() {
     <nav className="bg-xendit">
       <ul className="flex flex-row container space-x-6 justify-end h-16">
         <li className="h-full pt-4 mr-auto">
-          <NavLink to="/" className="text-xendit-lightest text-xl">
-            Universities
+          <NavLink to="/" className="text-xendit-lightest text-xl flex flex-row">
+            <FaGraduationCap className="mt-1 mr-1"/> Universities
           </NavLink>
         </li>
         <MainNav
