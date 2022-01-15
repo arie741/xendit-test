@@ -31,20 +31,7 @@ function UniversitiesList({ universities, sortBy }) {
   };
   return (
     <>
-      <ReactPaginate
-        className="flex flex-row space-x-2 mt-5"
-        pageLinkClassName="border border-2 border-gray-300 px-2 py-2 bg-gray rounded"
-        activeLinkClassName="bg-xendit text-xendit-lightest border-xendit"
-        previousLinkClassName="bg-xendit text-xendit-lightest border border-2 border-xendit px-2 py-2 rounded"
-        nextLinkClassName="bg-xendit text-xendit-lightest border border-2 border-xendit px-2 py-2 rounded"
-        breakLabel="..."
-        nextLabel="Next"
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={5}
-        pageCount={pageCount}
-        previousLabel="Prev"
-        renderOnZeroPageCount={null}
-      />
+      
       {currentItems &&
         currentItems.map((item, index) => (
           <div className="mt-2" key={index}>
@@ -58,14 +45,15 @@ function UniversitiesList({ universities, sortBy }) {
         ))}
       <ReactPaginate
         className="flex flex-row space-x-2 mt-5 mb-10"
-        pageLinkClassName="border border-2 border-gray-300 px-2 py-2 bg-gray rounded"
-        activeLinkClassName="bg-xendit text-xendit-lightest border-xendit"
-        previousLinkClassName="bg-xendit text-xendit-lightest border border-2 border-xendit px-2 py-2 rounded"
-        nextLinkClassName="bg-xendit text-xendit-lightest border border-2 border-xendit px-2 py-2 rounded"
+        pageLinkClassName="block text-xs md:text-md border border-2 border-gray-300 px-2 py-2 bg-gray rounded"
+        activeLinkClassName="block text-xs md:text-md bg-xendit text-xendit-lightest border-xendit"
+        previousLinkClassName="hidden md:block text-xs md:text-md bg-xendit text-xendit-lightest border border-2 border-xendit px-2 py-2 rounded"
+        nextLinkClassName="hidden md:block text-xs md:text-md bg-xendit text-xendit-lightest border border-2 border-xendit px-2 py-2 rounded"
         breakLabel="..."
         nextLabel="Next"
         onPageChange={handlePageClick}
-        pageRangeDisplayed={5}
+        pageRangeDisplayed={3}
+        marginPagesDisplayed={1}
         pageCount={pageCount}
         previousLabel="Prev"
         renderOnZeroPageCount={null}

@@ -15,12 +15,14 @@ function UniversityItem({ name, country, website, favbutton = false }) {
 
   return (
     <>
-      <div className="flex flex-col py-4 px-2 rounded shadow-md">
+      <div className="flex flex-col py-4 px-2 rounded shadow-md bg-xendit-lightest">
         <div className="text-xl font-bold">{name}</div>
         <div>{country}</div>
-        <a href={website} className="fit-content overflow-hidden text-xendit">
-          {website}
-        </a>
+        <div className="overflow-scroll w-full">
+          <a href={website} className="fit-content overflow-hidden text-xendit">
+            {website}
+          </a>
+        </div>
         {favbutton && (
           <div
             onClick={() => addToFavorites()}
@@ -31,7 +33,7 @@ function UniversityItem({ name, country, website, favbutton = false }) {
         )}
       </div>
       {favoriteMessage && (
-        <div className="text-green-700 my-2">{favoriteMessage}</div>
+        <div className="text-green-700 my-2 ml-2">{favoriteMessage}</div>
       )}
     </>
   );

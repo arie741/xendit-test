@@ -22,7 +22,7 @@ app.post("/subscribers", (req, res) => {
   let email = req.body.email;
   let currentSubscribers = subscribers;
   if (currentSubscribers.indexOf(email) !== -1) {
-    res.status(409).send("Email already exists.");
+    res.status(409).send("Email already subscribed.");
   } else {
     fs.writeFile(
       "./public/mock_database/subscribers.json",

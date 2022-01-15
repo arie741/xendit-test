@@ -31,7 +31,7 @@ function Register() {
   }
   return (
     <div className="container pt-10">
-      <div className="w-80 mx-auto border border-2 border-gray-200 shadow-xl p-4">
+      <div className="w-80 mx-auto border border-2 border-gray-200 shadow-xl p-4 bg-xendit-lightest">
         <div className="font-bold text-3xl mb-10">Register</div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="font-bold">Email</div>

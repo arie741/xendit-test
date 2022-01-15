@@ -13,3 +13,7 @@
 .fit-content{
     width:fit-content;
 }
+
+body {
+    @apply bg-xendit-backdrop
+}
