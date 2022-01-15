@@ -28,4 +28,4 @@ In the project directory:
 
 You may also run
 `npm lint`
-to get **ESLint** running and check the code for 
+to get **ESLint** running and check the code for writing mistakes.
