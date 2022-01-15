@@ -18,7 +18,7 @@ function UniversityItem({ name, country, website, favbutton = false }) {
       <div className="flex flex-col py-4 px-2 rounded shadow-md bg-xendit-lightest">
         <div className="text-xl font-bold">{name}</div>
         <div>{country}</div>
-        <div className="overflow-scroll w-full">
+        <div className="overflow-auto hide-scrollbar w-full">
           <a href={website} className="fit-content overflow-hidden text-xendit">
             {website}
           </a>
