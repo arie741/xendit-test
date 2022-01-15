@@ -12,20 +12,20 @@ A universities search engine with several features added such as:
 
 In the project directory:
 
-cd to backend
+1. cd to backend
 `cd backend`
 
-and then run
+2. and then run
 `nodemon app.js`
 
-Open another terminal, and then cd to frontend
+3. Open another terminal, and then cd to frontend
 `cd frontend`
 
-and then run
+4. and then run
 `npm start`
 
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+5. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 You may also run
 `npm lint`
-to get #ESLint running and check the code for 
+to get **ESLint** running and check the code for 
