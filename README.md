@@ -15,17 +15,27 @@ In the project directory:
 1. cd to backend
 `cd backend`
 
-2. and then run
+2. install the packages by 
+`npm install`
+
+3. and then run
 `nodemon app.js`
 
-3. Open another terminal, and then cd to frontend
+4. Open another terminal, and then cd to frontend
 `cd frontend`
 
-4. and then run
+5. install the packages by 
+`npm install`
+
+6. and then run
 `npm start`
 
-5. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+7. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 You may also run
 `npm run lint`
 in the frontend folder to get **ESLint** running and check the code for writing mistakes.
+
+## Testing
+This project use React testing library and Jest, to run the test, run:
+`npm run test`
