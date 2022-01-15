@@ -41,10 +41,12 @@ function Search() {
           type="text"
           className="shadow-md border border-2 border-grey-100 rounded w-full p-4"
           {...register("name")}
+          data-testid="input-name"
         />
         <div className="mt-2">
           <div className="pt-2 font-bold">Country</div>
           <select
+            data-testid="input-country"
             className="w-full rounded h-10 bg-xendit-lightest border border-2 border-grey shadow-md"
             {...register("country")}
           >
@@ -57,6 +59,7 @@ function Search() {
           </select>
         </div>
         <input
+          data-testid="submit-button"
           type="submit"
           value="Find Universities"
           className="rounded py-2 bg-xendit text-xendit-lightest px-2 my-2 cursor-pointer"
@@ -76,7 +79,7 @@ function Search() {
               <option value="country">Country</option>
             </select>
           </div>
-          <UniversitiesList universities={universities} sortBy={sortType}/>
+          <div data-testid="universities-list"><UniversitiesList universities={universities} sortBy={sortType}/></div>
         </div>
       ) : (
         ""

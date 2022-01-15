@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const getUsers = async () => {
   try {
-    let response = await axios.post("http://localhost:3001/users");
+    let response = await axios.post(`${process.env.REACT_APP_BACKEND_ADDRESS}/users`);
     return { error: true, response };
   } catch (error) {
     return { error: true, response: error };
@@ -12,7 +12,7 @@ export const getUsers = async () => {
 export const addUser = async (email, password) => {
   try {
     let response = await axios.post(
-      "http://localhost:3001/users",
+      `${process.env.REACT_APP_BACKEND_ADDRESS}/users`,
       { email, password },
       {
         headers: { "content-type": "application/json" },
@@ -27,7 +27,7 @@ export const addUser = async (email, password) => {
 
 export const validateUser = async (email, password) => {
   try {
-    let { data } = await axios.get(`http://localhost:3001/users/${email}`);
+    let { data } = await axios.get(`${process.env.REACT_APP_BACKEND_ADDRESS}/users/${email}`);
     if (data.email === email && data.password === password) {
       return { error: false, response: true };
     } else {

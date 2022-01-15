@@ -31,18 +31,17 @@ function UniversitiesList({ universities, sortBy }) {
   };
   return (
     <>
-      
-      {currentItems &&
-        currentItems.map((item, index) => (
-          <div className="mt-2" key={index}>
-            <UniversityItem
-              name={item.name}
-              country={item.country}
-              website={item.web_pages}
-              favbutton={true}
-            />
-          </div>
-        ))}
+        {currentItems &&
+          currentItems.map((item, index) => (
+            <div className="mt-2" data-testid="university-item" key={index}>
+              <UniversityItem
+                name={item.name}
+                country={item.country}
+                website={item.web_pages}
+                favbutton={true}
+              />
+            </div>
+          ))}
       <ReactPaginate
         className="flex flex-row space-x-2 mt-5 mb-10"
         pageLinkClassName="block text-xs md:text-md border border-2 border-gray-300 px-2 py-2 bg-gray rounded"
