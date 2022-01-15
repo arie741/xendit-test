@@ -27,5 +27,5 @@ In the project directory:
 5. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 You may also run
-`npm lint`
-to get **ESLint** running and check the code for writing mistakes.
+`npm run lint`
+in the frontend folder to get **ESLint** running and check the code for writing mistakes.
