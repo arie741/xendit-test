@@ -25,25 +25,27 @@ In the project directory:
 
 1. Clone this project `git clone https://github.com/arie741/xendit-test.git`
 
-2. cd to backend
+2. cd to this project `cd xendit-test`
+
+3. cd to backend
 `cd backend`
 
-3. install the packages by 
+4. install the packages by 
 `npm install`
 
-4. and then run
+5. and then run
 `nodemon app.js`
 
-5. Open another terminal, and then cd to frontend
+6. Open another terminal, and then cd to frontend
 `cd frontend`
 
-6. install the packages by 
+7. install the packages by 
 `npm install`
 
-7. and then run
+8. and then run
 `npm start`
 
-8. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+9. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 You may also run
 `npm run lint`
