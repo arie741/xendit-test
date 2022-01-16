@@ -2,13 +2,24 @@
 
 This project is a submission for xendit coding test.
 A universities search engine with several features added such as: 
-1. Login and Register functionality
-2. Sort by name and country
-3. Add to favorite functionality
-4. Pagination
-5. Add Subscription
+- Search universities by name and/or country
+- Login and Register functionality
+- Sort by name and country
+- Add to favorite functionality
+- Favorites universities list
+- Pagination
+- Add Subscription
+- Responsive Design
 
-## How to run
+## Framework and Libraries
+Other than ReactJs, This project uses several frameworks and libraries to support it:
+- Node js - Backend for user functionality
+- Tailwindcss - CSS framework
+- Axios - Http request library
+- React Icons - Simple react icon library
+- Cypress - Testing Framework
+
+## How to install and run
 
 In the project directory:
 
@@ -37,5 +48,6 @@ You may also run
 in the frontend folder to get **ESLint** running and check the code for writing mistakes.
 
 ## Testing
-This project use React testing library and Jest, to run the test, run:
+This project use Cypress for testing, to run the test, run:
 `npm run test`
+After that, Cypress UI will pop up. Click on a single node below "INTEGRATION TEST" to begin testing.
