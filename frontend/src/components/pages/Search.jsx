@@ -35,18 +35,18 @@ function Search() {
   return (
     <div className="container pt-10">
       <div className="text-3xl font-bold mb-5">Find universities</div>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} id="search-form">
         <div className="font-bold">Name</div>
         <input
+          id="search-input-name"
           type="text"
           className="shadow-md border border-2 border-grey-100 rounded w-full p-4"
           {...register("name")}
-          data-testid="input-name"
         />
         <div className="mt-2">
           <div className="pt-2 font-bold">Country</div>
           <select
-            data-testid="input-country"
+            id="search-input-country"
             className="w-full rounded h-10 bg-xendit-lightest border border-2 border-grey shadow-md"
             {...register("country")}
           >
@@ -59,7 +59,7 @@ function Search() {
           </select>
         </div>
         <input
-          data-testid="submit-button"
+          id="search-submit-button"
           type="submit"
           value="Find Universities"
           className="rounded py-2 bg-xendit text-xendit-lightest px-2 my-2 cursor-pointer"
@@ -74,17 +74,26 @@ function Search() {
         <div className="mt-10">
           <div>
             <div className="font-bold">Sort by</div>
-            <select className="rounded h-10 bg-xendit-lightest border border-2 border-grey shadow-md" onChange={(event) => setSortType(event.target.value)}>
+            <select
+              className="rounded h-10 bg-xendit-lightest border border-2 border-grey shadow-md"
+              onChange={(event) => setSortType(event.target.value)}
+            >
               <option value="name">Name</option>
               <option value="country">Country</option>
             </select>
           </div>
-          <div data-testid="universities-list"><UniversitiesList universities={universities} sortBy={sortType}/></div>
+          <div id="universities-list">
+            <UniversitiesList universities={universities} sortBy={sortType} />
+          </div>
         </div>
       ) : (
         ""
       )}
-      {errorMessage && <div className="mt-5 font-bold text-lg text-red-700">{errorMessage}</div>}
+      {errorMessage && (
+        <div className="mt-5 font-bold text-lg text-red-700">
+          {errorMessage}
+        </div>
+      )}
     </div>
   );
 }

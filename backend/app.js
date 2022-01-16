@@ -86,6 +86,18 @@ app.post("/users", (req, res) => {
   }
 })
 
+app.post("/users/auth", (req, res) => {
+  let email = req.body.email;
+  let password = req.body.password;
+  let currentUsers = users;
+  let findUser = currentUsers.find(item => item.email === email);
+  if(findUser && findUser.password === password){
+    res.send(true);
+  } else {
+    res.send(false);
+  }
+})
+
 app.post("/users/favorites", (req, res) => {
   let email = req.body.email;
   let favorite = req.body.favorite;

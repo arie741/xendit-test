@@ -33,7 +33,7 @@ function UniversitiesList({ universities, sortBy }) {
     <>
         {currentItems &&
           currentItems.map((item, index) => (
-            <div className="mt-2" data-testid="university-item" key={index}>
+            <div className="mt-2" id={`university-item-${index}`} key={index}>
               <UniversityItem
                 name={item.name}
                 country={item.country}

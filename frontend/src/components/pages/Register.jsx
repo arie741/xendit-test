@@ -22,9 +22,7 @@ function Register() {
           setErrorMessage("");
           setSuccessMessage("Your Account is Created!");
         })
-        .catch((error) =>
-          setErrorMessage(error.toString())
-        );
+        .catch((error) => setErrorMessage(error.toString()));
     } else {
       setErrorMessage("Your password doesn't match");
     }
@@ -36,6 +34,7 @@ function Register() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="font-bold">Email</div>
           <input
+            id="register-input-email"
             name="email"
             aria-invalid={errors.email ? "true" : "false"}
             {...register("email", {
@@ -48,6 +47,7 @@ function Register() {
           />
           <div className="font-bold">Password</div>
           <input
+            id="register-input-password"
             className="shadow-md border border-2 border-grey-100 rounded w-full p-4 mb-4"
             {...register("password", { minLength: 5 })}
             type="password"
@@ -56,6 +56,7 @@ function Register() {
           />
           <div className="font-bold">Confirm password</div>
           <input
+            id="register-input-confirm-password"
             className="shadow-md border border-2 border-grey-100 rounded w-full p-4 mb-4"
             {...register("confirmpassword", { minLength: 5 })}
             type="password"
@@ -63,21 +64,28 @@ function Register() {
             required
           />
           {errors.email && errors.email.type === "pattern" && (
-            <div className="text-red-700 my-2">Email address is invalid.</div>
+            <div className="text-red-700 my-2" id="error-email-message">
+              Email address is invalid.
+            </div>
           )}
           {errors.password && errors.password.type === "minLength" && (
-            <div className="text-red-700 my-2">Password must be longer than 5 characters.</div>
+            <div className="text-red-700 my-2" id="error-password-message">
+              Password must be longer than 5 characters.
+            </div>
           )}
           {errorMessage && (
-            <div className="text-red-700 my-2">{errorMessage}</div>
+            <div className="text-red-700 my-2" id="error-message">
+              {errorMessage}
+            </div>
           )}
           <input
+            id="register-submit-button"
             className="cursor-pointer rounded py-2 bg-xendit text-xendit-lightest px-2 my-2"
             type="submit"
             value="Register"
           />
           {successMessage && (
-            <div className="text-green-700 my-2">
+            <div className="text-green-700 my-2" id="register-success-message">
               {successMessage}{" "}
               <NavLink className="text-xendit font-bold" to="/login">
                 Login

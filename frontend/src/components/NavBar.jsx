@@ -20,7 +20,10 @@ function MobileNav({ isLogin, logout }) {
               </NavLink>
             </li>
             <li className="py-3">
-              <NavLink to="/register" className="text-xendit-lightest text-xl text-gray-700 bg-orange-500 px-3 py-2 rounded">
+              <NavLink
+                to="/register"
+                className="text-xendit-lightest text-xl text-gray-700 bg-orange-500 px-3 py-2 rounded"
+              >
                 Register
               </NavLink>
             </li>
@@ -34,6 +37,7 @@ function MobileNav({ isLogin, logout }) {
             </li>
             <li className="py-3">
               <div
+                id="logout-button"
                 onClick={() => logout()}
                 className="cursor-pointer text-xl text-gray-700 bg-red-500 px-3 py-2 rounded text-center"
               >
@@ -80,6 +84,7 @@ function MainNav({ isLogin, logout }) {
           </li>
           <li className="h-full pt-2 hidden md:block">
             <div
+              id="logout-button"
               onClick={() => logout()}
               className="cursor-pointer text-xl text-gray-700 bg-red-500 px-3 py-2 rounded"
             >
@@ -117,14 +122,14 @@ function NavBar() {
     <nav className="bg-xendit">
       <ul className="flex flex-row container space-x-6 justify-end h-16">
         <li className="h-full pt-4 mr-auto">
-          <NavLink to="/" className="text-xendit-lightest text-xl flex flex-row">
-            <FaGraduationCap className="mt-1 mr-1"/> Universities
+          <NavLink
+            to="/"
+            className="text-xendit-lightest text-xl flex flex-row"
+          >
+            <FaGraduationCap className="mt-1 mr-1" /> Universities
           </NavLink>
         </li>
-        <MainNav
-          isLogin={isLogin}
-          logout={logout}
-        />
+        <MainNav isLogin={isLogin} logout={logout} />
         <li className="h-full pt-4 block md:hidden">
           <div
             onClick={() => openMobileMenu()}

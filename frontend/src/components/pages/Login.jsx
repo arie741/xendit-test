@@ -39,6 +39,7 @@ function Login() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="font-bold">Email</div>
           <input
+            id="login-input-email"
             name="email"
             aria-invalid={errors.email ? "true" : "false"}
             {...register("email", {
@@ -51,6 +52,7 @@ function Login() {
           />
           <div className="font-bold">Password</div>
           <input
+            id="login-input-password"
             className="shadow-md border border-2 border-grey-100 rounded w-full p-4 mb-4"
             {...register("password")}
             type="password"
@@ -58,10 +60,10 @@ function Login() {
             required
           />
           {errors.email && errors.email.type === "pattern" && (
-            <div className="text-red-700 my-2">Email address is invalid.</div>
+            <div className="text-red-700 my-2" id="error-email-message">Email address is invalid.</div>
           )}
           {errorMessage && (
-            <div className="text-red-700 my-2">{errorMessage}</div>
+            <div className="text-red-700 my-2" id="error-message">{errorMessage}</div>
           )}
           <div>
             Doesn&apos;t have an account?{" "}
@@ -70,6 +72,7 @@ function Login() {
             </NavLink>
           </div>
           <input
+            id="login-submit-button"
             className="cursor-pointer rounded py-2 bg-xendit text-xendit-lightest px-2 my-2"
             type="submit"
             value="Login"

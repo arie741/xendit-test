@@ -24,10 +24,10 @@ function Favorites() {
 
   return (
     <div className="container pt-10">
-      <div className="font-bold text-3xl">Favorites</div>
+      <div className="font-bold text-3xl" id="favorites">Favorites</div>
       {favorites && favorites.length !== 0 ? (
         favorites.map((item, index) => (
-          <div key={index} className="mt-4">
+          <div key={index} className="mt-4" id={`favorites-item-${index}`}>
             <UniversityItem
               name={item.name}
               country={item.country}
@@ -36,7 +36,7 @@ function Favorites() {
           </div>
         ))
       ) : (
-        <div className="text-2xl mt-10">You have no favorite universities, add some!</div>
+        <div className="text-2xl mt-10" id="favorites-empty-message">You have no favorite universities, add some!</div>
       )}
       {errorMessage && <div className="text-red-700 my-2">{errorMessage}</div>}
     </div>
