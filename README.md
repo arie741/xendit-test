@@ -23,25 +23,27 @@ Other than ReactJs, This project uses several frameworks and libraries to suppor
 
 In the project directory:
 
-1. cd to backend
+1. Clone this project `git clone https://github.com/arie741/xendit-test.git`
+
+2. cd to backend
 `cd backend`
 
-2. install the packages by 
+3. install the packages by 
 `npm install`
 
-3. and then run
+4. and then run
 `nodemon app.js`
 
-4. Open another terminal, and then cd to frontend
+5. Open another terminal, and then cd to frontend
 `cd frontend`
 
-5. install the packages by 
+6. install the packages by 
 `npm install`
 
-6. and then run
+7. and then run
 `npm start`
 
-7. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+8. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 You may also run
 `npm run lint`
